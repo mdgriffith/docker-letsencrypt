@@ -16,4 +16,4 @@ WORKDIR /letsencrypt
 
 ENTRYPOINT ./start.sh
 
-EXPOSE 9999
+EXPOSE 80

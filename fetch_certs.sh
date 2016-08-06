@@ -20,8 +20,9 @@ do
    # do whatever on $i
 done
 
-certbot certonly --standalone --renew-by-default \
+certbot certonly --standalone
+    --renew-by-default \
     --agree-tos --text \
-    --standalone-supported-challenges http-01 --http-01-port 9999 \
+    --standalone-supported-challenges http-01 \
     $domain_args \
     --email=$EMAIL
