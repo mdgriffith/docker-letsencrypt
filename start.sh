@@ -29,7 +29,4 @@ fi
 
 # Start cron
 echo "Starting cron..."
-cron &
-
-echo "Starting nginx..."
-nginx -g 'daemon off;'
+cron -f

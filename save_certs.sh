@@ -21,9 +21,10 @@ DOMAINS=($DOMAINS)
 
 DOMAIN=${DOMAINS[0]}
 
-CERT=$(cat $CERT_LOCATION/$DOMAIN/fullchain.pem | base64 --wrap=0)
+CERT=$(cat $CERT_LOCATION/$DOMAIN/cert.pem | base64 --wrap=0)
+CHAIN=$(cat $CERT_LOCATION/$DOMAIN/chain.pem | base64 --wrap=0)
+FULLCHAIN=$(cat $CERT_LOCATION/$DOMAIN/fullchain.pem | base64 --wrap=0)
 KEY=$(cat $CERT_LOCATION/$DOMAIN/privkey.pem | base64 --wrap=0)
-DHPARAM=$(openssl dhparam 2048 | base64 --wrap=0)
 
 NAMESPACE=${NAMESPACE:-default}
 
@@ -38,9 +39,10 @@ cat << EOF | kubectl $ACTION -f -
    "namespace": "$NAMESPACE"
  },
  "data": {
-   "proxycert": "$CERT",
-   "proxykey": "$KEY",
-   "dhparam": "$DHPARAM"
+   "cert.pem": "$CERT",
+   "chain.pem": "$CHAIN",
+   "fullchain.pem": "$FULLCHAIN",
+   "privkey.pem": "$KEY"
  }
 }
 EOF

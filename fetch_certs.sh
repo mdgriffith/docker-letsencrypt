@@ -20,8 +20,8 @@ do
    # do whatever on $i
 done
 
-/usr/local/bin/letsencrypt certonly \
-    --webroot -w /letsencrypt/challenges/ \
-    --text --renew-by-default --agree-tos \
-      $domain_args \
-     --email=$EMAIL
+certbot certonly --standalone --renew-by-default \
+    --agree-tos --text \
+    --standalone-supported-challenges http-01 --http-01-port 9999 \
+    $domain_args \
+    --email=$EMAIL
