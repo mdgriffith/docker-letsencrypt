@@ -14,6 +14,6 @@ ADD start.sh /letsencrypt/
 
 WORKDIR /letsencrypt
 
-ENTRYPOINT ./start.sh
-
 EXPOSE 80
+
+ENTRYPOINT ./start.sh

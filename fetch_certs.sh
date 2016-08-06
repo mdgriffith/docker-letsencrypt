@@ -20,7 +20,7 @@ do
    # do whatever on $i
 done
 
-certbot certonly --standalone
+certbot certonly --standalone \
     --renew-by-default \
     --agree-tos --text \
     --standalone-supported-challenges http-01 \
